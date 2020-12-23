@@ -1,0 +1,11 @@
+<h1>Postcode Checker</h1>
+
+<%= form_with url: :postcode_checker_index, method: :get do |form| %>
+  <%= form.label :postcode, "Postcode: " %>
+  <%= form.text_field :postcode, placeholder: 'postcode' %>
+  <%= form.submit "Search" %>
+<% end %>
+
+<% if @result %>
+  <p><%= @result %></p>
+<% end %>
