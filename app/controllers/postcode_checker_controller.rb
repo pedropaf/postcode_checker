@@ -2,8 +2,8 @@
 
 class PostcodeCheckerController < ApplicationController
   def index
-    postcode = postcode_checker_params["postcode"] 
-    return if postcode.nil? || postcode.empty?
+    postcode = postcode_checker_params['postcode']
+    return if postcode.blank?
 
     begin
       service = PostcodeCheckerService.new

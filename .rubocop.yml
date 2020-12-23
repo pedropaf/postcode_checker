@@ -3,3 +3,5 @@ require:
   - rubocop-rails
 Documentation:
   Enabled: false
+Metrics/BlockLength:
+  IgnoredMethods: ['describe', 'context']
