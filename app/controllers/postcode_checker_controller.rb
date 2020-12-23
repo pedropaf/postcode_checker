@@ -2,12 +2,13 @@
 
 class PostcodeCheckerController < ApplicationController
   def index
-    return unless params[:postcode]
+    postcode = postcode_checker_params["postcode"] 
+    return if postcode.nil? || postcode.empty?
 
     begin
       service = PostcodeCheckerService.new
-      is_valid = service.postcode_valid?(params[:postcode]) ? 'valid' : 'not valid'
-      @result = "The postcode #{params[:postcode]} is #{is_valid}"
+      is_valid = service.postcode_valid?(postcode) ? 'valid' : 'not valid'
+      @result = "The postcode #{postcode} is #{is_valid}"
     rescue StandardError => e
       @result = e
     end
@@ -16,6 +17,6 @@ class PostcodeCheckerController < ApplicationController
   private
 
   def postcode_checker_params
-    params.require(:postcode)
+    params.permit(:postcode)
   end
 end
